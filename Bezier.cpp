@@ -1,20 +1,30 @@
 #include "Bezier.hpp"
 
+void PrintMatrix(Eigen::MatrixXd mat)
+{
+    for(int i = 0 ; i < mat.rows() ; i++)
+    {
+        for(int j = 0 ; j < mat.cols() ; j++)
+        {
+            std::cout << mat(i, j) << "  ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 int GetFactorial(int n_)
 {   
-    int res;
+    int res = 1.0;
 
-    if((n_ > -0.1) && (n_ < 0.1))
-        return 1;
-    else
-    {   res = n_;
+    if(n_ > 0.1)
+    {   
         for( ; n_ > 0 ; n_--)
         {
             res *= n_;
         }
     }
 
-    return res;
+    return (int)res;
 }
 
 /* constructor */
@@ -37,15 +47,21 @@ Bezier::~Bezier()
 void Bezier::BezierInit()
 {   
     /* get C */
+    #ifdef BEZIER_TEST_PRINT_C
+        std::cout << "----------------------------------------- C -----------------------------------------" << std::endl;
+    #endif
     for(int i = 0 ; i < (N + 1) ; i++)
     {
-        C[i] = ( GetFactorial(N) / GetFactorial(i) * GetFactorial(N - i) );
+        C[i] = GetFactorial(N) / (GetFactorial(i) * GetFactorial(N - i) );
+        #ifdef BEZIER_TEST_PRINT_C
+            std::cout << C[i] << std::endl;
+        #endif
     }
 }
 
 void Bezier::BezierRun(Eigen::MatrixXd P_)
 {
-    res = Eigen::MatrixXd::Zero();
+    res = Eigen::MatrixXd::Zero(dim_state, cnt_sampling);
     /* error checking */
     if((P_.rows()) != dim_state)
         std::cout << "P is in wrong rows !!!" << std::endl; 
@@ -56,9 +72,14 @@ void Bezier::BezierRun(Eigen::MatrixXd P_)
     {
         for(int i = 0 ; i < (N + 1) ; i++)
         {
-            res.col(j) += P_.col(i) * C[i] * pow((j * T) , i) * pow((1.0 - j * T) , i);
+            res.col(j) += P_.col(i) * C[i] * pow((j * T) , i) * pow((1.0 - j * T) , (N - i));
         }
     }
+
+    #ifdef BEZIER_TEST_PRINT_RES
+        std::cout << "----------------------------------------- RES -----------------------------------------" << std::endl;
+        PrintMatrix(res);
+    #endif
 }
 
 void Bezier::GetDesire()

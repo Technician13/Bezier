@@ -6,7 +6,10 @@
 #include <math.h>
 
 /* ************************************ option start ************************************ */
-
+/* print C */
+#define BEZIER_TEST_PRINT_C
+/* print res */
+#define BEZIER_TEST_PRINT_RES
 /* ************************************ option end ************************************ */
 
 class Bezier
