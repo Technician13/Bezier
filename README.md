@@ -14,44 +14,40 @@
 
 <br/>    
 
-## 2dim-2order
----     
+## 2dim-2order 
 * Control points are set as `(0, 0)` & `(5, 5)` & `(6, 0)`.    
 * All control points are connected with blue solid lines in sequence. 
 * Red curve is the planning result.    
 <div align=center>
-  <img src="img/2dim2order.png" style="zoom:37%">
+  <img src="img/2dim2order.png" width=60%>
 </div>
 
 <br/>
 
 ## 2dim-3order  
----   
 * Control points are set as `(0, 0)` & `(2, 4)` & `(5, -2)` & `(6, 0)`.    
 * All control points are connected with blue solid lines in sequence. 
 * Red curve is the planning result.   
 <div align=center>
-  <img src="img/2dim3order.png" style="zoom:37%">
+  <img src="img/2dim3order.png" width=60%>
 </div>
 
 <br/>
 
 ## 3dim-2order 
----    
 * Control points are set as `(0, 0, 0)` & `4, 4, -4)` & `(-6, 7, 8)`.    
 * All control points are connected with blue solid lines in sequence. 
 * Red curve is the planning result.   
 <div align=center>
-  <img src="img/3dim2order.png" style="zoom:50%">
+  <img src="img/3dim2order.png" width=60%>
 </div>
 
 <br/>
 
 ## 3dim-3order     
----  
 * Control points are set as `(0, 0, 0)` & `-2, 1, 6)` & `(-5, 5, -5)` & `(0, 8, 0)`.    
 * All control points are connected with blue solid lines in sequence. 
 * Red curve is the planning result.   
 <div align=center>
-  <img src="img/3dim3order.png" style="zoom:50%">
+  <img src="img/3dim3order.png" width=60%>
 </div>
